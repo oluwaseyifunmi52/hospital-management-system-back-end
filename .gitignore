@@ -1,0 +1,9 @@
+node_modules
+dist
+.env
+uploads/*.pdf
+uploads/*.jpg
+uploads/*.jpeg
+uploads/*.png
+uploads/*.gif
+uploads/*.webp
