@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: smartcare-backend
+    runtime: node
+    nodeVersion: "20.x"
+    build:
+      commands:
+        - npm install
+        - npm run build
+    start: npm start

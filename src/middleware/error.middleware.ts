@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { config } from '../config/env';
 
 export const errorHandler = (
   err: any,
@@ -36,8 +37,36 @@ export const errorHandler = (
     return;
   }
 
-  res.status(err.statusCode || 500).json({
+  if (err.name === 'CastError') {
+    res.status(400).json({
+      success: false,
+      message: `Invalid ${err.path}: ${err.value}`,
+    });
+    return;
+  }
+
+  if (err.name === 'MulterError') {
+    if (err.code === 'LIMIT_FILE_SIZE') {
+      res.status(400).json({
+        success: false,
+        message: 'File size exceeds limit',
+      });
+      return;
+    }
+    res.status(400).json({
+      success: false,
+      message: err.message,
+    });
+    return;
+  }
+
+  const statusCode = err.statusCode || 500;
+  const message = config.nodeEnv === 'production' && statusCode === 500
+    ? 'Internal server error'
+    : err.message || 'Internal server error';
+
+  res.status(statusCode).json({
     success: false,
-    message: err.message || 'Internal server error',
+    message,
   });
 };

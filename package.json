@@ -2,6 +2,9 @@
   "name": "smartcare-backend",
   "version": "1.0.0",
   "description": "SmartCare Hospital Management System Backend",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",

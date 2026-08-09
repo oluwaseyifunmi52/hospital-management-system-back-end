@@ -19,6 +19,7 @@ import {
 import { authenticate } from '../middleware/auth.middleware';
 import { roleMiddleware } from '../middleware/role.middleware';
 import { validate } from '../middleware/validate.middleware';
+import { validateObjectId } from '../middleware/validateObjectId.middleware';
 import {
   createLabTestCategorySchema,
   createLabTestSchema,
@@ -37,19 +38,19 @@ router.get('/categories', getLabTestCategories);
 router.use(roleMiddleware(['super_admin', 'admin']));
 
 router.post('/categories', validate(createLabTestCategorySchema), createLabTestCategory);
-router.patch('/categories/:id', updateLabTestCategory);
-router.delete('/categories/:id', deleteLabTestCategory);
+router.patch('/categories/:id', validateObjectId('id'), updateLabTestCategory);
+router.delete('/categories/:id', validateObjectId('id'), deleteLabTestCategory);
 
 router.post('/tests', validate(createLabTestSchema), createLabTest);
-router.get('/tests/:id', getLabTestById);
-router.patch('/tests/:id', updateLabTest);
-router.delete('/tests/:id', deleteLabTest);
+router.get('/tests/:id', validateObjectId('id'), getLabTestById);
+router.patch('/tests/:id', validateObjectId('id'), updateLabTest);
+router.delete('/tests/:id', validateObjectId('id'), deleteLabTest);
 
 router.use(roleMiddleware(['super_admin', 'admin', 'doctor', 'laboratory']));
 
 router.get('/requests/pending', getPendingLabTestRequests);
 router.get('/requests', getLabTestRequests);
-router.get('/requests/:id', getLabTestRequestById);
+router.get('/requests/:id', validateObjectId('id'), getLabTestRequestById);
 
 router.use(roleMiddleware(['super_admin', 'admin', 'doctor']));
 
@@ -57,7 +58,7 @@ router.post('/requests', validate(createLabTestRequestSchema), createLabTestRequ
 
 router.use(roleMiddleware(['super_admin', 'admin', 'laboratory']));
 
-router.patch('/requests/:id/status', validate(updateLabTestRequestStatusSchema), updateLabTestRequestStatus);
-router.patch('/requests/:id/results', validate(updateLabResultsSchema), enterLabResults);
+router.patch('/requests/:id/status', validateObjectId('id'), validate(updateLabTestRequestStatusSchema), updateLabTestRequestStatus);
+router.patch('/requests/:id/results', validateObjectId('id'), validate(updateLabResultsSchema), enterLabResults);
 
 export default router;

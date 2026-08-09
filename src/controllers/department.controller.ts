@@ -1,140 +1,118 @@
-import { Response } from 'express';
-import { DepartmentService, ServiceService } from '../services/department.service';
-import { sendSuccess } from '../utils/response';
+import { Request, Response } from 'express';
+import { Department } from '../models/Department';
+import { sendSuccess, sendError, sendPaginated } from '../utils/response';
 import { AuthRequest } from '../types';
-import { AppError } from '../services/auth.service';
+import mongoose from 'mongoose';
 
 export const createDepartment = async (req: AuthRequest, res: Response) => {
   try {
-    const result = await DepartmentService.create(req.body);
-    sendSuccess(res, result, 'Department created successfully', 201);
+    const department = await Department.create(req.body);
+    sendSuccess(res, department, 'Department created successfully', 201);
   } catch (error: any) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({ success: false, message: error.message });
+    if (error.code === 11000) {
+      sendError(res, 'Department with this name or code already exists', 409);
       return;
     }
-    res.status(500).json({ success: false, message: 'Internal server error' });
+    sendError(res, error.message);
   }
 };
 
 export const getDepartments = async (req: AuthRequest, res: Response) => {
   try {
-    const result = await DepartmentService.getAll({
-      type: req.query.type as string,
-      isActive: req.query.isActive === 'true',
-      search: req.query.search as string,
-      page: parseInt(req.query.page as string),
-      limit: parseInt(req.query.limit as string),
-    });
-    sendSuccess(res, result, 'Departments retrieved');
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || 10;
+    const search = req.query.search as string;
+    const isActive = req.query.isActive;
+
+    const query: any = {};
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { code: { $regex: search, $options: 'i' } },
+      ];
+    }
+    if (isActive !== undefined) {
+      query.isActive = isActive === 'true';
+    }
+
+    const [departments, total] = await Promise.all([
+      Department.find(query)
+        .populate('headOfDepartment', 'firstName lastName email')
+        .populate('parentDepartment', 'name code')
+        .sort({ createdAt: -1 })
+        .skip((page - 1) * limit)
+        .limit(limit),
+      Department.countDocuments(query),
+    ]);
+
+    sendPaginated(res, departments, total, page, limit);
   } catch (error: any) {
-    res.status(500).json({ success: false, message: 'Internal server error' });
+    sendError(res, error.message);
   }
 };
 
 export const getDepartmentById = async (req: AuthRequest, res: Response) => {
   try {
-    const result = await DepartmentService.getById(req.params.id);
-    sendSuccess(res, result, 'Department retrieved');
-  } catch (error: any) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({ success: false, message: error.message });
+    const department = await Department.findById(req.params.id)
+      .populate('headOfDepartment', 'firstName lastName email phone')
+      .populate('parentDepartment', 'name code');
+    if (!department) {
+      sendError(res, 'Department not found', 404);
       return;
     }
-    res.status(500).json({ success: false, message: 'Internal server error' });
+    sendSuccess(res, department);
+  } catch (error: any) {
+    sendError(res, error.message);
   }
 };
 
 export const updateDepartment = async (req: AuthRequest, res: Response) => {
   try {
-    const result = await DepartmentService.update(req.params.id, req.body);
-    sendSuccess(res, result, 'Department updated successfully');
-  } catch (error: any) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({ success: false, message: error.message });
+    const department = await Department.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    if (!department) {
+      sendError(res, 'Department not found', 404);
       return;
     }
-    res.status(500).json({ success: false, message: 'Internal server error' });
+    sendSuccess(res, department, 'Department updated successfully');
+  } catch (error: any) {
+    if (error.code === 11000) {
+      sendError(res, 'Department with this name or code already exists', 409);
+      return;
+    }
+    sendError(res, error.message);
   }
 };
 
 export const deleteDepartment = async (req: AuthRequest, res: Response) => {
   try {
-    const result = await DepartmentService.delete(req.params.id);
-    sendSuccess(res, result, 'Department deleted successfully');
-  } catch (error: any) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({ success: false, message: error.message });
+    const department = await Department.findByIdAndDelete(req.params.id);
+    if (!department) {
+      sendError(res, 'Department not found', 404);
       return;
     }
-    res.status(500).json({ success: false, message: 'Internal server error' });
+    sendSuccess(res, null, 'Department deleted successfully');
+  } catch (error: any) {
+    sendError(res, error.message);
   }
 };
 
-export const createServiceItem = async (req: AuthRequest, res: Response) => {
+export const getDepartmentStaff = async (req: AuthRequest, res: Response) => {
   try {
-    const result = await ServiceService.create(req.body);
-    sendSuccess(res, result, 'Service created successfully', 201);
-  } catch (error: any) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({ success: false, message: error.message });
+    const { Department: Dept } = await import('../models/Department');
+    const { User } = await import('../models/User');
+    
+    const department = await Department.findById(req.params.id);
+    if (!department) {
+      sendError(res, 'Department not found', 404);
       return;
     }
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
-};
 
-export const getServices = async (req: AuthRequest, res: Response) => {
-  try {
-    const result = await ServiceService.getAll({
-      category: req.query.category as string,
-      department: req.query.department as string,
-      isActive: req.query.isActive === 'true',
-      search: req.query.search as string,
-      page: parseInt(req.query.page as string),
-      limit: parseInt(req.query.limit as string),
-    });
-    sendSuccess(res, result, 'Services retrieved');
-  } catch (error: any) {
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
-};
+    const staff = await User.find({ role: { $in: ['doctor', 'nurse', 'receptionist', 'pharmacist', 'laboratory', 'radiologist', 'accountant', 'ambulance_driver', 'admin'] } })
+      .select('firstName lastName email phone role isActive lastLoginAt')
+      .sort({ createdAt: -1 });
 
-export const getServiceById = async (req: AuthRequest, res: Response) => {
-  try {
-    const result = await ServiceService.getById(req.params.id);
-    sendSuccess(res, result, 'Service retrieved');
+    sendSuccess(res, staff);
   } catch (error: any) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({ success: false, message: error.message });
-      return;
-    }
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
-};
-
-export const updateServiceItem = async (req: AuthRequest, res: Response) => {
-  try {
-    const result = await ServiceService.update(req.params.id, req.body);
-    sendSuccess(res, result, 'Service updated successfully');
-  } catch (error: any) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({ success: false, message: error.message });
-      return;
-    }
-    res.status(500).json({ success: false, message: 'Internal server error' });
-  }
-};
-
-export const deleteServiceItem = async (req: AuthRequest, res: Response) => {
-  try {
-    const result = await ServiceService.delete(req.params.id);
-    sendSuccess(res, result, 'Service deleted successfully');
-  } catch (error: any) {
-    if (error instanceof AppError) {
-      res.status(error.statusCode).json({ success: false, message: error.message });
-      return;
-    }
-    res.status(500).json({ success: false, message: 'Internal server error' });
+    sendError(res, error.message);
   }
 };

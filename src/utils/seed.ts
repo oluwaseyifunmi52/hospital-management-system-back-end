@@ -11,11 +11,15 @@ export const seedAdmin = async () => {
       return;
     }
 
-    const hashedPassword = await bcrypt.hash('admin123', 12);
+    const adminPassword = process.env.DEFAULT_ADMIN_PASSWORD || 'ChangeMe123!';
+    const superAdminPassword = process.env.DEFAULT_SUPER_ADMIN_PASSWORD || 'ChangeMe123!';
+    
+    const hashedAdminPassword = await bcrypt.hash(adminPassword, 12);
+    const hashedSuperAdminPassword = await bcrypt.hash(superAdminPassword, 12);
 
     await User.create({
       email: 'admin@smartcare.com',
-      password: hashedPassword,
+      password: hashedAdminPassword,
       firstName: 'System',
       lastName: 'Admin',
       phone: '+1234567890',
@@ -27,10 +31,9 @@ export const seedAdmin = async () => {
 
     const existingSuperAdmin = await User.findOne({ email: 'superadmin@smartcare.com' });
     if (!existingSuperAdmin) {
-      const superHashedPassword = await bcrypt.hash('superadmin123', 12);
       await User.create({
         email: 'superadmin@smartcare.com',
-        password: superHashedPassword,
+        password: hashedSuperAdminPassword,
         firstName: 'Super',
         lastName: 'Admin',
         phone: '+1234567890',
@@ -39,10 +42,11 @@ export const seedAdmin = async () => {
         isActive: true,
         isProfileComplete: true,
       });
-      console.log('Default super_admin account created: superadmin@smartcare.com / superadmin123');
+      console.log('Default super_admin account created: superadmin@smartcare.com');
     }
 
-    console.log('Default admin account created: admin@smartcare.com / admin123');
+    console.log('Default admin account created: admin@smartcare.com');
+    console.log('IMPORTANT: Change default passwords immediately after first login!');
   } catch (error) {
     console.error('Seed error:', error);
   }

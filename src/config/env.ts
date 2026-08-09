@@ -2,10 +2,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const config = {
+  nodeEnv: process.env.NODE_ENV || 'development',
   port: parseInt(process.env.PORT || '5000', 10),
   mongodbUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/smartcare',
-  jwtAccessSecret: process.env.JWT_ACCESS_SECRET || 'default-access-secret',
-  jwtRefreshSecret: process.env.JWT_REFRESH_SECRET || 'default-refresh-secret',
+  jwtAccessSecret: process.env.JWT_ACCESS_SECRET || 'default-access-secret-change-in-production',
+  jwtRefreshSecret: process.env.JWT_REFRESH_SECRET || 'default-refresh-secret-change-in-production',
   jwtAccessExpiry: process.env.JWT_ACCESS_EXPIRY || '15m',
   jwtRefreshExpiry: process.env.JWT_REFRESH_EXPIRY || '7d',
   smtpHost: process.env.SMTP_HOST || 'smtp.gmail.com',
