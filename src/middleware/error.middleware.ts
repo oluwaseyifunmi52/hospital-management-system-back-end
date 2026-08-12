@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import { config } from '../config/env';
+import { logger } from '../utils/logger';
 
 export const errorHandler = (
   err: any,
@@ -7,7 +8,18 @@ export const errorHandler = (
   res: Response,
   next: NextFunction
 ): void => {
-  console.error('Error:', err);
+  const requestId = req.headers['x-request-id'] as string;
+
+  logger.error('Request error', {
+    requestId,
+    method: req.method,
+    url: req.originalUrl,
+    ip: req.ip,
+    userAgent: req.get('user-agent'),
+    error: err.message,
+    stack: err.stack,
+    statusCode: err.statusCode || 500,
+  });
 
   if (err.name === 'ValidationError') {
     res.status(400).json({

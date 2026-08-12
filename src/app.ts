@@ -2,7 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
+import swaggerUi from 'swagger-ui-express';
 import { config } from './config/env';
+import { swaggerSpec } from './config/swagger';
 import { errorHandler } from './middleware/error.middleware';
 import { generalRateLimit } from './middleware/rateLimit.middleware';
 import { requestIdMiddleware } from './middleware/requestId.middleware';
@@ -33,18 +37,47 @@ const app = express();
 
 app.use(helmet({
   crossOriginResourcePolicy: { policy: 'cross-origin' },
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+      fontSrc: ["'self'", 'https://fonts.gstatic.com'],
+      imgSrc: ["'self'", 'data:', 'https:'],
+      scriptSrc: ["'self'"],
+      connectSrc: ["'self'"],
+      frameSrc: ["'none'"],
+      objectSrc: ["'none'"],
+    },
+  },
+  hsts: {
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true,
+  },
+  referrerPolicy: { policy: 'strict-origin-when-cross-origin' },
 }));
 app.use(cors({ 
   origin: config.clientUrl, 
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'X-Request-ID'],
+  exposedHeaders: ['X-Request-ID'],
+  maxAge: 86400,
 }));
-app.use(morgan('dev'));
+app.use(compression());
+app.use(morgan(config.nodeEnv === 'production' ? 'combined' : 'dev'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(requestIdMiddleware);
 app.use(generalRateLimit);
+
+if (config.nodeEnv !== 'production') {
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: 'SmartCare API Documentation',
+  }));
+}
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/admin', adminRoutes);
@@ -74,6 +107,38 @@ app.get('/health', (req, res) => {
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
     memory: process.memoryUsage(),
+    version: process.env.npm_package_version || '1.0.0',
+    environment: config.nodeEnv,
+  });
+});
+
+app.get('/api/v1', (req, res) => {
+  res.json({
+    name: 'SmartCare Hospital Management System API',
+    version: '1.0.0',
+    description: 'API for SmartCare Hospital Management System',
+    documentation: `${req.protocol}://${req.get('host')}/api-docs`,
+    endpoints: {
+      auth: '/api/v1/auth',
+      users: '/api/v1/users',
+      doctors: '/api/v1/doctor',
+      patients: '/api/v1/patient',
+      appointments: '/api/v1/appointments',
+      medicalRecords: '/api/v1/medical-records',
+      departments: '/api/v1/hospital/departments',
+      wards: '/api/v1/hospital/wards',
+      nursing: '/api/v1/nursing',
+      lab: '/api/v1/lab',
+      pharmacy: '/api/v1/pharmacy',
+      radiology: '/api/v1/radiology',
+      billing: '/api/v1/billing',
+      inventory: '/api/v1/inventory',
+      notifications: '/api/v1/notifications',
+      dashboard: '/api/v1/dashboard',
+      auditLogs: '/api/v1/audit-logs',
+      branches: '/api/v1/branches',
+      staff: '/api/v1/staff',
+    },
   });
 });
 

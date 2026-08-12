@@ -1,6 +1,14 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { UserRole } from '../types';
 
+export interface IRefreshToken {
+  token: string;
+  expiresAt: Date;
+  createdAt: Date;
+  revoked: boolean;
+  family?: string;
+}
+
 export interface IUser extends Document {
   email: string;
   password: string;
@@ -20,7 +28,7 @@ export interface IUser extends Document {
   passwordResetExpires?: Date;
   otp?: string;
   otpExpires?: Date;
-  refreshTokens: { token: string; expiresAt: Date }[];
+  refreshTokens: IRefreshToken[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -53,6 +61,9 @@ const userSchema = new Schema<IUser>(
       {
         token: { type: String },
         expiresAt: { type: Date },
+        createdAt: { type: Date, default: Date.now },
+        revoked: { type: Boolean, default: false },
+        family: { type: String },
       },
     ],
   },

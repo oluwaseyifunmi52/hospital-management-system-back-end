@@ -1,11 +1,11 @@
-import { User, IUser } from '../models/User';
+import { User, IUser, IRefreshToken } from '../models/User';
 import { hashPassword, comparePassword } from '../utils/password';
 import {
   generateAccessToken,
   generateRefreshToken,
   verifyRefreshToken,
 } from '../utils/generateToken';
-import { generateOTP, hashOTP } from '../utils/generateOTP';
+import { generateOTP, hashOTP, hashRefreshToken } from '../utils/generateOTP';
 import {
   sendVerificationEmail,
   sendPasswordResetEmail,
@@ -13,6 +13,15 @@ import {
 import { JwtPayload } from '../types';
 import crypto from 'crypto';
 import { logAction } from '../utils/auditLog';
+
+const compareTokens = (providedToken: string, storedHash: string): boolean => {
+  const providedHash = hashRefreshToken(providedToken);
+  return crypto.timingSafeEqual(Buffer.from(providedHash), Buffer.from(storedHash));
+};
+
+const generateTokenFamily = (): string => {
+  return crypto.randomBytes(16).toString('hex');
+};
 
 export class AuthService {
   static async registerPatient(data: {
@@ -106,7 +115,15 @@ export class AuthService {
       ? new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
       : new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
 
-    user.refreshTokens.push({ token: refreshToken, expiresAt: refreshExpiry });
+    const hashedRefreshToken = hashRefreshToken(refreshToken);
+    const tokenFamily = generateTokenFamily();
+    user.refreshTokens.push({
+      token: hashedRefreshToken,
+      expiresAt: refreshExpiry,
+      createdAt: new Date(),
+      revoked: false,
+      family: tokenFamily,
+    });
     await user.save();
 
     user.lastLoginAt = new Date();
@@ -134,30 +151,145 @@ export class AuthService {
   }
 
   static async refreshToken(token: string) {
-    const decoded = verifyRefreshToken(token);
-    const user = await User.findById(decoded.id);
-
-    if (!user) {
-      throw new AppError('User not found', 404);
+    if (!token) {
+      throw new AppError('Refresh token is required', 401);
     }
 
-    const storedToken = user.refreshTokens.find((t) => t.token === token);
+    let decoded: JwtPayload;
+    try {
+      decoded = verifyRefreshToken(token);
+    } catch (error) {
+      throw new AppError('Invalid or expired refresh token', 401);
+    }
+
+    if (!decoded.id) {
+      throw new AppError('Invalid token payload', 401);
+    }
+
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      throw new AppError('User not found', 401);
+    }
+
+    if (!user.isActive) {
+      throw new AppError('Account is deactivated', 403);
+    }
+
+    const storedToken = user.refreshTokens.find((t) => compareTokens(token, t.token));
+
     if (!storedToken) {
       throw new AppError('Invalid refresh token', 401);
     }
 
+    if (storedToken.revoked) {
+      await this.revokeTokenFamily(user, storedToken.family);
+      throw new AppError('Token reuse detected. Please log in again.', 401);
+    }
+
     if (new Date() > storedToken.expiresAt) {
-      user.refreshTokens = user.refreshTokens.filter((t) => t.token !== token);
-      await user.save();
       throw new AppError('Refresh token expired', 401);
     }
 
-    const newAccessToken = generateAccessToken({
-      id: user._id.toString(),
-      role: user.role,
+    const newTokenPayload: JwtPayload = { id: user._id.toString(), role: user.role };
+    const newAccessToken = generateAccessToken(newTokenPayload);
+    const newRefreshToken = generateRefreshToken(newTokenPayload);
+
+    const refreshExpiry = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+    const hashedNewRefreshToken = hashRefreshToken(newRefreshToken);
+
+    const session = await User.startSession();
+    let transactionCommitted = false;
+
+    try {
+      session.startTransaction();
+
+      storedToken.revoked = true;
+      await user.save({ session });
+
+      user.refreshTokens.push({
+        token: hashedNewRefreshToken,
+        expiresAt: refreshExpiry,
+        createdAt: new Date(),
+        revoked: false,
+        family: storedToken.family,
+      });
+
+      await user.save({ session });
+      await session.commitTransaction();
+      transactionCommitted = true;
+
+      logAction({
+        userId: user._id.toString(),
+        action: 'token_refresh',
+        resourceType: 'Auth',
+        details: { email: user.email },
+      });
+
+      return { accessToken: newAccessToken, refreshToken: newRefreshToken };
+    } catch (error: any) {
+      if (!transactionCommitted) {
+        try {
+          await session.abortTransaction();
+        } catch (abortError) {
+          // Ignore abort errors
+        }
+
+        if (error.message?.includes('Transaction numbers are only allowed on a replica set')) {
+          // Fallback for standalone MongoDB (e.g., test environment)
+          return this.refreshTokenWithoutTransaction(user, storedToken, newAccessToken, newRefreshToken, hashedNewRefreshToken, refreshExpiry);
+        }
+      }
+      throw error;
+    } finally {
+      await session.endSession();
+    }
+  }
+
+  static async refreshTokenWithoutTransaction(
+    user: IUser,
+    storedToken: IRefreshToken,
+    newAccessToken: string,
+    newRefreshToken: string,
+    hashedNewRefreshToken: string,
+    refreshExpiry: Date
+  ) {
+    storedToken.revoked = true;
+
+    user.refreshTokens.push({
+      token: hashedNewRefreshToken,
+      expiresAt: refreshExpiry,
+      createdAt: new Date(),
+      revoked: false,
+      family: storedToken.family,
     });
 
-    return { accessToken: newAccessToken };
+    await user.save();
+
+    logAction({
+      userId: user._id.toString(),
+      action: 'token_refresh',
+      resourceType: 'Auth',
+      details: { email: user.email },
+    });
+
+    return { accessToken: newAccessToken, refreshToken: newRefreshToken };
+  }
+
+  static async revokeTokenFamily(user: IUser, family?: string) {
+    if (!family) return;
+    user.refreshTokens.forEach((t) => {
+      if (t.family === family) {
+        t.revoked = true;
+      }
+    });
+    await user.save();
+
+    logAction({
+      userId: user._id.toString(),
+      action: 'token_family_revoked',
+      resourceType: 'Auth',
+      details: { family },
+    });
   }
 
   static async logout(userId: string, refreshToken: string) {
@@ -166,8 +298,11 @@ export class AuthService {
       throw new AppError('User not found', 404);
     }
 
-    user.refreshTokens = user.refreshTokens.filter((t) => t.token !== refreshToken);
-    await user.save();
+    const storedToken = user.refreshTokens.find((t) => compareTokens(refreshToken, t.token));
+    if (storedToken) {
+      storedToken.revoked = true;
+      await user.save();
+    }
 
     return { message: 'Logged out successfully' };
   }
