@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -122,7 +122,7 @@
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L60'></a><a href='#L60'>60</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,7 +143,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -171,17 +171,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import mongoose, { Schema, Document } from 'mongoose';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import mongoose, { Schema, Document } from 'mongoose';
 &nbsp;
 export interface IInventoryItem extends Document {
   name: string;
@@ -202,7 +202,7 @@ export interface IInventoryItem extends Document {
   updatedAt: Date;
 }
 &nbsp;
-const inventoryItemSchema = <span class="cstat-no" title="statement not covered" >new Schema&lt;IInventoryItem&gt;(</span>
+const inventoryItemSchema = new Schema&lt;IInventoryItem&gt;(
   {
     name: { type: String, required: true, trim: true },
     description: { type: String },
@@ -230,13 +230,13 @@ const inventoryItemSchema = <span class="cstat-no" title="statement not covered"
   { timestamps: true }
 );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >inventoryItemSchema.index({ name: 1 });</span>
-<span class="cstat-no" title="statement not covered" >inventoryItemSchema.index({ category: 1 });</span>
-<span class="cstat-no" title="statement not covered" >inventoryItemSchema.index({ itemType: 1 });</span>
-<span class="cstat-no" title="statement not covered" >inventoryItemSchema.index({ supplier: 1 });</span>
-<span class="cstat-no" title="statement not covered" >inventoryItemSchema.index({ status: 1 });</span>
+inventoryItemSchema.index({ name: 1 });
+inventoryItemSchema.index({ category: 1 });
+inventoryItemSchema.index({ itemType: 1 });
+inventoryItemSchema.index({ supplier: 1 });
+inventoryItemSchema.index({ status: 1 });
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >InventoryItem = mongoose.model&lt;IInventoryItem&gt;(</span>
+export const InventoryItem = mongoose.model&lt;IInventoryItem&gt;(
   'InventoryItem',
   inventoryItemSchema
 );
@@ -247,7 +247,7 @@ export const <span class="cstat-no" title="statement not covered" >InventoryItem
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:17.049Z
+                at 2026-08-12T20:44:10.447Z
             </div>
         <script src="../prettify.js"></script>
         <script>

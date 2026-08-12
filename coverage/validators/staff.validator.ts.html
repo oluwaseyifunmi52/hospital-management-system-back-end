@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -169,9 +169,9 @@
 <a name='L104'></a><a href='#L104'>104</a>
 <a name='L105'></a><a href='#L105'>105</a>
 <a name='L106'></a><a href='#L106'>106</a>
-<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L107'></a><a href='#L107'>107</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,7 +195,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -227,21 +227,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -252,11 +252,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -271,13 +271,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { z } from 'zod';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { z } from 'zod';
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >createStaffSchema = z.object({</span>
+export const createStaffSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   email: z.string().email(),
@@ -301,7 +301,7 @@ export const <span class="cstat-no" title="statement not covered" >createStaffSc
   }).optional(),
 });
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >updateStaffSchema = z.object({</span>
+export const updateStaffSchema = z.object({
   firstName: z.string().optional(),
   lastName: z.string().optional(),
   email: z.string().email().optional(),
@@ -333,21 +333,21 @@ export const <span class="cstat-no" title="statement not covered" >updateStaffSc
   }).optional(),
 });
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >attendanceCheckInSchema = z.object({</span>
+export const attendanceCheckInSchema = z.object({
   location: z.object({
     latitude: z.number(),
     longitude: z.number(),
   }).optional(),
 });
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >attendanceCheckOutSchema = z.object({</span>
+export const attendanceCheckOutSchema = z.object({
   location: z.object({
     latitude: z.number(),
     longitude: z.number(),
   }).optional(),
 });
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >createLeaveRequestSchema = z.object({</span>
+export const createLeaveRequestSchema = z.object({
   leaveType: z.enum(['annual', 'sick', 'maternity', 'paternity', 'emergency', 'unpaid', 'other']),
   startDate: z.string(),
   endDate: z.string(),
@@ -358,11 +358,11 @@ export const <span class="cstat-no" title="statement not covered" >createLeaveRe
   })).optional(),
 });
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >approveLeaveRequestSchema = z.object({</span>
+export const approveLeaveRequestSchema = z.object({
   rejectionReason: z.string().optional(),
 });
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >createPayrollSchema = z.object({</span>
+export const createPayrollSchema = z.object({
   staffId: z.string(),
   month: z.number().min(1).max(12),
   year: z.number(),
@@ -377,7 +377,7 @@ export const <span class="cstat-no" title="statement not covered" >createPayroll
   })),
 });
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >updatePayrollStatusSchema = z.object({</span>
+export const updatePayrollStatusSchema = z.object({
   status: z.enum(['draft', 'generated', 'paid', 'cancelled']),
   paymentMethod: z.string().optional(),
   transactionId: z.string().optional(),
@@ -388,7 +388,7 @@ export const <span class="cstat-no" title="statement not covered" >updatePayroll
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:17.049Z
+                at 2026-08-12T20:44:10.447Z
             </div>
         <script src="../prettify.js"></script>
         <script>

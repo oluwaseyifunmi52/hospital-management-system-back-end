@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/25</span>
+                <span class='fraction'>25/25</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -112,8 +112,8 @@
 <a name='L47'></a><a href='#L47'>47</a>
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L50'></a><a href='#L50'>50</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -129,40 +129,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Router } from 'express';</span>
-<span class="cstat-no" title="statement not covered" >import {</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Router } from 'express';
+import {
   createBill,
   getBills,
   getBillById,
@@ -178,38 +178,38 @@
   getRevenueReport,
   getPatientStatement,
 } from '../controllers/billing.controller';
-<span class="cstat-no" title="statement not covered" >import { authenticate } from '../middleware/auth.middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { roleMiddleware } from '../middleware/role.middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { validate } from '../middleware/validate.middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { validateObjectId } from '../middleware/validateObjectId.middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { createBillSchema, recordPaymentSchema } from '../validators/billing.validator';</span>
+import { authenticate } from '../middleware/auth.middleware';
+import { roleMiddleware } from '../middleware/role.middleware';
+import { validate } from '../middleware/validate.middleware';
+import { validateObjectId } from '../middleware/validateObjectId.middleware';
+import { createBillSchema, recordPaymentSchema } from '../validators/billing.validator';
 &nbsp;
-const router = <span class="cstat-no" title="statement not covered" >Router();</span>
+const router = Router();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.use(authenticate);</span>
+router.use(authenticate);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.get('/bills/patient/:patientId', validateObjectId('patientId'), getBillsByPatient);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/bills/patient/:patientId/outstanding', validateObjectId('patientId'), getOutstandingBills);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/bills/patient/:patientId/statement', validateObjectId('patientId'), getPatientStatement);</span>
+router.get('/bills/patient/:patientId', validateObjectId('patientId'), getBillsByPatient);
+router.get('/bills/patient/:patientId/outstanding', validateObjectId('patientId'), getOutstandingBills);
+router.get('/bills/patient/:patientId/statement', validateObjectId('patientId'), getPatientStatement);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.use(roleMiddleware(['super_admin', 'admin', 'accountant']));</span>
+router.use(roleMiddleware(['super_admin', 'admin', 'accountant']));
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.get('/bills', getBills);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/bills/:id', validateObjectId('id'), getBillById);</span>
-<span class="cstat-no" title="statement not covered" >router.post('/bills', validate(createBillSchema), createBill);</span>
-<span class="cstat-no" title="statement not covered" >router.patch('/bills/:id', validateObjectId('id'), updateBill);</span>
-<span class="cstat-no" title="statement not covered" >router.delete('/bills/:id', validateObjectId('id'), deleteBill);</span>
+router.get('/bills', getBills);
+router.get('/bills/:id', validateObjectId('id'), getBillById);
+router.post('/bills', validate(createBillSchema), createBill);
+router.patch('/bills/:id', validateObjectId('id'), updateBill);
+router.delete('/bills/:id', validateObjectId('id'), deleteBill);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.post('/bills/:billId/payments/:patientId', validateObjectId('billId'), validateObjectId('patientId'), validate(recordPaymentSchema), recordPayment);</span>
+router.post('/bills/:billId/payments/:patientId', validateObjectId('billId'), validateObjectId('patientId'), validate(recordPaymentSchema), recordPayment);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.get('/payments', getPayments);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/payments/:id', validateObjectId('id'), getPaymentById);</span>
-<span class="cstat-no" title="statement not covered" >router.post('/payments/:id/refund', validateObjectId('id'), refundPayment);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/payments/:id/receipt', validateObjectId('id'), generateReceipt);</span>
+router.get('/payments', getPayments);
+router.get('/payments/:id', validateObjectId('id'), getPaymentById);
+router.post('/payments/:id/refund', validateObjectId('id'), refundPayment);
+router.get('/payments/:id/receipt', validateObjectId('id'), generateReceipt);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.get('/reports/revenue', getRevenueReport);</span>
+router.get('/reports/revenue', getRevenueReport);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default router;</span>
+export default router;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -217,7 +217,7 @@ const router = <span class="cstat-no" title="statement not covered" >Router();</
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:16.011Z
+                at 2026-08-12T20:44:09.370Z
             </div>
         <script src="../prettify.js"></script>
         <script>

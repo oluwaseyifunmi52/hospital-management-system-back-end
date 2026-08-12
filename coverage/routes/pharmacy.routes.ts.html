@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -103,8 +103,8 @@
 <a name='L38'></a><a href='#L38'>38</a>
 <a name='L39'></a><a href='#L39'>39</a>
 <a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L41'></a><a href='#L41'>41</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -117,34 +117,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Router } from 'express';</span>
-<span class="cstat-no" title="statement not covered" >import {</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Router } from 'express';
+import {
   createMedicine,
   getMedicines,
   getMedicineById,
@@ -157,32 +157,32 @@
   getPharmacySales,
   getPharmacySaleById,
 } from '../controllers/pharmacy.controller';
-<span class="cstat-no" title="statement not covered" >import { authenticate } from '../middleware/auth.middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { roleMiddleware } from '../middleware/role.middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { validate } from '../middleware/validate.middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { createMedicineSchema, updateMedicineSchema, createPharmacySaleSchema, updateInventoryStockSchema } from '../validators/pharmacy.validator';</span>
+import { authenticate } from '../middleware/auth.middleware';
+import { roleMiddleware } from '../middleware/role.middleware';
+import { validate } from '../middleware/validate.middleware';
+import { createMedicineSchema, updateMedicineSchema, createPharmacySaleSchema, updateInventoryStockSchema } from '../validators/pharmacy.validator';
 &nbsp;
-const router = <span class="cstat-no" title="statement not covered" >Router();</span>
+const router = Router();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.use(authenticate);</span>
+router.use(authenticate);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.get('/low-stock', getLowStockMedicines);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/expiring-soon', getExpiringSoonMedicines);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/sales', getPharmacySales);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/sales/:id', getPharmacySaleById);</span>
+router.get('/low-stock', getLowStockMedicines);
+router.get('/expiring-soon', getExpiringSoonMedicines);
+router.get('/sales', getPharmacySales);
+router.get('/sales/:id', getPharmacySaleById);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.use(roleMiddleware(['super_admin', 'admin', 'pharmacist']));</span>
+router.use(roleMiddleware(['super_admin', 'admin', 'pharmacist']));
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.post('/', validate(createMedicineSchema), createMedicine);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/', getMedicines);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/:id', getMedicineById);</span>
-<span class="cstat-no" title="statement not covered" >router.patch('/:id', validate(updateMedicineSchema), updateMedicine);</span>
-<span class="cstat-no" title="statement not covered" >router.delete('/:id', deleteMedicine);</span>
-<span class="cstat-no" title="statement not covered" >router.patch('/:id/stock', validate(updateInventoryStockSchema), updateMedicineStock);</span>
+router.post('/', validate(createMedicineSchema), createMedicine);
+router.get('/', getMedicines);
+router.get('/:id', getMedicineById);
+router.patch('/:id', validate(updateMedicineSchema), updateMedicine);
+router.delete('/:id', deleteMedicine);
+router.patch('/:id/stock', validate(updateInventoryStockSchema), updateMedicineStock);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.post('/sales', roleMiddleware(['super_admin', 'admin', 'pharmacist']), validate(createPharmacySaleSchema), createPharmacySale);</span>
+router.post('/sales', roleMiddleware(['super_admin', 'admin', 'pharmacist']), validate(createPharmacySaleSchema), createPharmacySale);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default router;</span>
+export default router;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -190,7 +190,7 @@ const router = <span class="cstat-no" title="statement not covered" >Router();</
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:17.049Z
+                at 2026-08-12T20:44:10.447Z
             </div>
         <script src="../prettify.js"></script>
         <script>

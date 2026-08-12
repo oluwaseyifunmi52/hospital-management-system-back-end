@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">18.6% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/86</span>
+                <span class='fraction'>16/86</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">12.82% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/78</span>
+                <span class='fraction'>10/78</span>
             </div>
         
             
@@ -221,13 +221,13 @@
 <a name='L156'></a><a href='#L156'>156</a>
 <a name='L157'></a><a href='#L157'>157</a>
 <a name='L158'></a><a href='#L158'>158</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -261,9 +261,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -275,7 +275,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -310,9 +310,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -336,10 +336,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -362,7 +362,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -378,13 +378,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Request, Response } from 'express';
-<span class="cstat-no" title="statement not covered" >import { User } from '../models/User';</span>
-<span class="cstat-no" title="statement not covered" >import { sendSuccess, sendError, sendPaginated } from '../utils/response';</span>
+import { User } from '../models/User';
+import { sendSuccess, sendError, sendPaginated } from '../utils/response';
 import { AuthRequest } from '../types';
-<span class="cstat-no" title="statement not covered" >import { hashPassword, comparePassword } from '../utils/password';</span>
-<span class="cstat-no" title="statement not covered" >import { logAction } from '../utils/auditLog';</span>
+import { hashPassword, comparePassword } from '../utils/password';
+import { logAction } from '../utils/auditLog';
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >getUsers = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const getUsers = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const page = <span class="cstat-no" title="statement not covered" >parseInt(req.query.page as string) || 1;</span>
     const limit = <span class="cstat-no" title="statement not covered" >parseInt(req.query.limit as string) || 10;</span>
@@ -418,7 +418,7 @@ export const <span class="cstat-no" title="statement not covered" >getUsers = <s
   }
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >getUserById = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const getUserById = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const user = <span class="cstat-no" title="statement not covered" >await User.findById(req.params.id)</span>
       .select('-password -refreshTokens -passwordResetToken -passwordResetExpires -otp -otpExpires');
@@ -432,7 +432,7 @@ export const <span class="cstat-no" title="statement not covered" >getUserById =
   }
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >updateUser = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const updateUser = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { id } = <span class="cstat-no" title="statement not covered" >req.params;</span>
     const updates = <span class="cstat-no" title="statement not covered" >req.body;</span>
@@ -467,7 +467,7 @@ export const <span class="cstat-no" title="statement not covered" >updateUser = 
   }
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >deleteUser = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const deleteUser = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const user = <span class="cstat-no" title="statement not covered" >await User.findByIdAndUpdate(</span>
       req.params.id,
@@ -493,7 +493,7 @@ export const <span class="cstat-no" title="statement not covered" >deleteUser = 
   }
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >updateUserPassword = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const updateUserPassword = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { currentPassword, newPassword } = <span class="cstat-no" title="statement not covered" >req.body;</span>
     const user = <span class="cstat-no" title="statement not covered" >await User.findById(req.user!.id).select('+password');</span>
@@ -519,7 +519,7 @@ export const <span class="cstat-no" title="statement not covered" >updateUserPas
   }
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >getUserPermissions = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const getUserPermissions = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const user = <span class="cstat-no" title="statement not covered" >await User.findById(req.params.id);</span>
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!user) {</span>
@@ -541,7 +541,7 @@ export const <span class="cstat-no" title="statement not covered" >getUserPermis
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:17.049Z
+                at 2026-08-12T20:44:10.447Z
             </div>
         <script src="../prettify.js"></script>
         <script>

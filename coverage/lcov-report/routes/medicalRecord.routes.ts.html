@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -95,8 +95,8 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -106,29 +106,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Router } from 'express';</span>
-<span class="cstat-no" title="statement not covered" >import {</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Router } from 'express';
+import {
   createMedicalRecord,
   getMedicalRecordsByPatient,
   getMedicalRecordById,
@@ -138,27 +138,27 @@
   getPrescriptionById,
   updatePrescriptionStatus,
 } from '../controllers/medicalRecord.controller';
-<span class="cstat-no" title="statement not covered" >import { authenticate } from '../middleware/auth.middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { roleMiddleware } from '../middleware/role.middleware';</span>
-<span class="cstat-no" title="statement not covered" >import { validateObjectId } from '../middleware/validateObjectId.middleware';</span>
+import { authenticate } from '../middleware/auth.middleware';
+import { roleMiddleware } from '../middleware/role.middleware';
+import { validateObjectId } from '../middleware/validateObjectId.middleware';
 &nbsp;
-const router = <span class="cstat-no" title="statement not covered" >Router();</span>
+const router = Router();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.use(authenticate);</span>
+router.use(authenticate);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.post('/', roleMiddleware(['doctor']), createMedicalRecord);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/', roleMiddleware(['doctor']), getMedicalRecordsByPatient);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/patient/:patientId', roleMiddleware(['doctor', 'admin']), validateObjectId('patientId'), getMedicalRecordsByPatient);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/:id', validateObjectId('id'), getMedicalRecordById);</span>
-<span class="cstat-no" title="statement not covered" >router.patch('/:id', roleMiddleware(['doctor']), validateObjectId('id'), updateMedicalRecord);</span>
+router.post('/', roleMiddleware(['doctor']), createMedicalRecord);
+router.get('/', roleMiddleware(['doctor']), getMedicalRecordsByPatient);
+router.get('/patient/:patientId', roleMiddleware(['doctor', 'admin']), validateObjectId('patientId'), getMedicalRecordsByPatient);
+router.get('/:id', validateObjectId('id'), getMedicalRecordById);
+router.patch('/:id', roleMiddleware(['doctor']), validateObjectId('id'), updateMedicalRecord);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >router.post('/prescriptions', roleMiddleware(['doctor']), createPrescription);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/prescriptions/list', roleMiddleware(['patient']), getPrescriptionsByPatient);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/prescriptions/patient/:patientId', roleMiddleware(['doctor', 'admin']), validateObjectId('patientId'), getPrescriptionsByPatient);</span>
-<span class="cstat-no" title="statement not covered" >router.get('/prescriptions/:id', validateObjectId('id'), getPrescriptionById);</span>
-<span class="cstat-no" title="statement not covered" >router.patch('/prescriptions/:id/status', roleMiddleware(['pharmacist', 'doctor', 'admin']), validateObjectId('id'), updatePrescriptionStatus);</span>
+router.post('/prescriptions', roleMiddleware(['doctor']), createPrescription);
+router.get('/prescriptions/list', roleMiddleware(['patient']), getPrescriptionsByPatient);
+router.get('/prescriptions/patient/:patientId', roleMiddleware(['doctor', 'admin']), validateObjectId('patientId'), getPrescriptionsByPatient);
+router.get('/prescriptions/:id', validateObjectId('id'), getPrescriptionById);
+router.patch('/prescriptions/:id/status', roleMiddleware(['pharmacist', 'doctor', 'admin']), validateObjectId('id'), updatePrescriptionStatus);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default router;</span>
+export default router;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -166,7 +166,7 @@ const router = <span class="cstat-no" title="statement not covered" >Router();</
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:16.011Z
+                at 2026-08-12T20:44:09.370Z
             </div>
         <script src="../prettify.js"></script>
         <script>

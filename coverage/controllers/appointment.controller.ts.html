@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">14.78% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/115</span>
+                <span class='fraction'>17/115</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">10.37% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/106</span>
+                <span class='fraction'>11/106</span>
             </div>
         
             
@@ -301,13 +301,13 @@
 <a name='L236'></a><a href='#L236'>236</a>
 <a name='L237'></a><a href='#L237'>237</a>
 <a name='L238'></a><a href='#L238'>238</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -342,9 +342,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -373,7 +373,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -399,7 +399,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -430,9 +430,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -464,9 +464,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -512,7 +512,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -538,13 +538,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Response } from 'express';
-<span class="cstat-no" title="statement not covered" >import { Appointment } from '../models/Appointment';</span>
-<span class="cstat-no" title="statement not covered" >import { sendSuccess } from '../utils/response';</span>
+import { Appointment } from '../models/Appointment';
+import { sendSuccess } from '../utils/response';
 import { AuthRequest } from '../types';
-<span class="cstat-no" title="statement not covered" >import { AppError } from '../services/auth.service';</span>
-<span class="cstat-no" title="statement not covered" >import { logAction } from '../utils/auditLog';</span>
+import { AppError } from '../services/auth.service';
+import { logAction } from '../utils/auditLog';
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >getAppointments = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const getAppointments = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { page = <span class="branch-0 cbranch-no" title="branch not covered" >'1',</span> limit = <span class="branch-0 cbranch-no" title="branch not covered" >'10',</span> status, date } = <span class="cstat-no" title="statement not covered" >req.query;</span>
     const query: any = <span class="cstat-no" title="statement not covered" >{};</span>
@@ -579,7 +579,7 @@ export const <span class="cstat-no" title="statement not covered" >getAppointmen
   }
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >getAppointmentById = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const getAppointmentById = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const appointment = <span class="cstat-no" title="statement not covered" >await Appointment.findById(req.params.id)</span>
       .populate('patient', 'firstName lastName email phone')
@@ -610,7 +610,7 @@ export const <span class="cstat-no" title="statement not covered" >getAppointmen
   }
 };
 &nbsp;
-const checkAppointmentAccess = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >async </span>(</span>
+const checkAppointmentAccess = <span class="fstat-no" title="function not covered" >async </span>(
   appointmentId: string,
   userId: string,
   userRole: string
@@ -636,7 +636,7 @@ const checkAppointmentAccess = <span class="cstat-no" title="statement not cover
 <span class="cstat-no" title="statement not covered" >  return appointment;</span>
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >updateAppointment = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const updateAppointment = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const appointment = <span class="cstat-no" title="statement not covered" >await checkAppointmentAccess(</span>
       req.params.id,
@@ -667,7 +667,7 @@ export const <span class="cstat-no" title="statement not covered" >updateAppoint
   }
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >cancelAppointment = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const cancelAppointment = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const appointment = <span class="cstat-no" title="statement not covered" >await checkAppointmentAccess(</span>
       req.params.id,
@@ -701,7 +701,7 @@ export const <span class="cstat-no" title="statement not covered" >cancelAppoint
   }
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >rescheduleAppointment = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const rescheduleAppointment = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const appointment = <span class="cstat-no" title="statement not covered" >await checkAppointmentAccess(</span>
       req.params.id,
@@ -749,7 +749,7 @@ export const <span class="cstat-no" title="statement not covered" >rescheduleApp
   }
 };
 &nbsp;
-export const <span class="cstat-no" title="statement not covered" >checkInAppointment = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >a</span>sync </span>(req: AuthRequest, res: Response) =&gt; {</span>
+export const checkInAppointment = <span class="fstat-no" title="function not covered" >async </span>(req: AuthRequest, res: Response) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const appointment = <span class="cstat-no" title="statement not covered" >await Appointment.findById(req.params.id);</span>
 &nbsp;
@@ -781,7 +781,7 @@ export const <span class="cstat-no" title="statement not covered" >checkInAppoin
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:17.049Z
+                at 2026-08-12T20:44:10.447Z
             </div>
         <script src="../prettify.js"></script>
         <script>

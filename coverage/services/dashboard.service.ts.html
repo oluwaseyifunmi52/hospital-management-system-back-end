@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">9.6% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/125</span>
+                <span class='fraction'>12/125</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">9.67% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/124</span>
+                <span class='fraction'>12/124</span>
             </div>
         
             
@@ -563,20 +563,20 @@
 <a name='L498'></a><a href='#L498'>498</a>
 <a name='L499'></a><a href='#L499'>499</a>
 <a name='L500'></a><a href='#L500'>500</a>
-<a name='L501'></a><a href='#L501'>501</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L501'></a><a href='#L501'>501</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -1063,20 +1063,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Appointment } from '../models/Appointment';</span>
-<span class="cstat-no" title="statement not covered" >import { MedicalRecord } from '../models/MedicalRecord';</span>
-<span class="cstat-no" title="statement not covered" >import { User } from '../models/User';</span>
-<span class="cstat-no" title="statement not covered" >import { Bed, IBed } from '../models/Bed';</span>
-<span class="cstat-no" title="statement not covered" >import { Admission } from '../models/Admission';</span>
-<span class="cstat-no" title="statement not covered" >import { LabTestRequest } from '../models/LabTestRequest';</span>
-<span class="cstat-no" title="statement not covered" >import { RadiologyRequest } from '../models/RadiologyRequest';</span>
-<span class="cstat-no" title="statement not covered" >import { Prescription } from '../models/Prescription';</span>
-<span class="cstat-no" title="statement not covered" >import { Bill } from '../models/Bill';</span>
-<span class="cstat-no" title="statement not covered" >import { Medicine } from '../models/Medicine';</span>
-<span class="cstat-no" title="statement not covered" >import { InventoryItem } from '../models/InventoryItem';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Appointment } from '../models/Appointment';
+import { MedicalRecord } from '../models/MedicalRecord';
+import { User } from '../models/User';
+import { Bed, IBed } from '../models/Bed';
+import { Admission } from '../models/Admission';
+import { LabTestRequest } from '../models/LabTestRequest';
+import { RadiologyRequest } from '../models/RadiologyRequest';
+import { Prescription } from '../models/Prescription';
+import { Bill } from '../models/Bill';
+import { Medicine } from '../models/Medicine';
+import { InventoryItem } from '../models/InventoryItem';
 import { PatientProfile } from '../models/PatientProfile';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export class D</span>ashboardService {
+export class DashboardService {
 <span class="fstat-no" title="function not covered" >  static </span>async getSuperAdminDashboard() {
     const totalPatients = <span class="cstat-no" title="statement not covered" >await User.countDocuments({ role: 'patient' });</span>
     const totalDoctors = <span class="cstat-no" title="statement not covered" >await User.countDocuments({ role: 'doctor' });</span>
@@ -1570,7 +1570,7 @@ import { PatientProfile } from '../models/PatientProfile';
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:17.049Z
+                at 2026-08-12T20:44:10.447Z
             </div>
         <script src="../prettify.js"></script>
         <script>

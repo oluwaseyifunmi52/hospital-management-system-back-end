@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">4.32% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/185</span>
+                <span class='fraction'>8/185</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">4.59% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/174</span>
+                <span class='fraction'>8/174</span>
             </div>
         
             
@@ -458,13 +458,13 @@
 <a name='L393'></a><a href='#L393'>393</a>
 <a name='L394'></a><a href='#L394'>394</a>
 <a name='L395'></a><a href='#L395'>395</a>
-<a name='L396'></a><a href='#L396'>396</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<a name='L396'></a><a href='#L396'>396</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -559,7 +559,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -661,7 +661,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -853,13 +853,13 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { Ward, IWard } from '../models/Ward';</span>
-<span class="cstat-no" title="statement not covered" >import { Bed, IBed } from '../models/Bed';</span>
-<span class="cstat-no" title="statement not covered" >import { Admission, IAdmission } from '../models/Admission';</span>
-<span class="cstat-no" title="statement not covered" >import { AppError } from './auth.service';</span>
-<span class="cstat-no" title="statement not covered" >import { logAction, createNotification } from '../utils/auditLog';</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Ward, IWard } from '../models/Ward';
+import { Bed, IBed } from '../models/Bed';
+import { Admission, IAdmission } from '../models/Admission';
+import { AppError } from './auth.service';
+import { logAction, createNotification } from '../utils/auditLog';
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export class W</span>ardService {
+export class WardService {
 <span class="fstat-no" title="function not covered" >  static </span>async create(data: Partial&lt;IWard&gt;) {
     const existing = <span class="cstat-no" title="statement not covered" >await Ward.findOne({ name: data.name });</span>
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (existing) {</span>
@@ -954,7 +954,7 @@
   }
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export class B</span>edService {
+export class BedService {
 <span class="fstat-no" title="function not covered" >  static </span>async create(data: Partial&lt;IBed&gt;) {
     const existing = <span class="cstat-no" title="statement not covered" >await Bed.findOne({ bedNumber: data.bedNumber, ward: data.ward });</span>
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (existing) {</span>
@@ -1056,7 +1056,7 @@
   }
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export class A</span>dmissionService {
+export class AdmissionService {
 <span class="fstat-no" title="function not covered" >  static </span>async create(data: {
     patientId: string;
     bedId: string;
@@ -1255,7 +1255,7 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:16.011Z
+                at 2026-08-12T20:44:09.370Z
             </div>
         <script src="../prettify.js"></script>
         <script>

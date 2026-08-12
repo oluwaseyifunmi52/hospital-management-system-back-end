@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">70.58% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>17/17</span>
+                <span class='fraction'>12/17</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">61.53% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>8/13</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,55 +97,55 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">74x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">36x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">38x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">31x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import jwt from 'jsonwebtoken';
 import { config } from '../config/env';
 import { JwtPayload } from '../types';
 import crypto from 'crypto';
 &nbsp;
-const generateJti = (): string =&gt; {
-  return crypto.randomBytes(16).toString('hex');
+const generateJti = <span class="fstat-no" title="function not covered" >(): string =</span>&gt; {
+<span class="cstat-no" title="statement not covered" >  return crypto.randomBytes(16).toString('hex');</span>
 };
 &nbsp;
-export const generateAccessToken = (payload: JwtPayload): string =&gt; {
-  return jwt.sign({ ...payload, jti: generateJti() }, config.jwtAccessSecret, {
+export const generateAccessToken = <span class="fstat-no" title="function not covered" >(p</span>ayload: JwtPayload): string =&gt; {
+<span class="cstat-no" title="statement not covered" >  return jwt.sign({ ...payload, jti: generateJti() }, config.jwtAccessSecret, {</span>
     expiresIn: config.jwtAccessExpiry as string,
   } as jwt.SignOptions);
 };
 &nbsp;
-export const generateRefreshToken = (payload: JwtPayload): string =&gt; {
-  return jwt.sign({ ...payload, jti: generateJti() }, config.jwtRefreshSecret, {
+export const generateRefreshToken = <span class="fstat-no" title="function not covered" >(p</span>ayload: JwtPayload): string =&gt; {
+<span class="cstat-no" title="statement not covered" >  return jwt.sign({ ...payload, jti: generateJti() }, config.jwtRefreshSecret, {</span>
     expiresIn: config.jwtRefreshExpiry as string,
   } as jwt.SignOptions);
 };
 &nbsp;
-export const verifyAccessToken = (token: string): JwtPayload =&gt; {
-  return jwt.verify(token, config.jwtAccessSecret) as JwtPayload;
+export const verifyAccessToken = <span class="fstat-no" title="function not covered" >(t</span>oken: string): JwtPayload =&gt; {
+<span class="cstat-no" title="statement not covered" >  return jwt.verify(token, config.jwtAccessSecret) as JwtPayload;</span>
 };
 &nbsp;
-export const verifyRefreshToken = (token: string): JwtPayload =&gt; {
-  return jwt.verify(token, config.jwtRefreshSecret) as JwtPayload;
+export const verifyRefreshToken = <span class="fstat-no" title="function not covered" >(t</span>oken: string): JwtPayload =&gt; {
+<span class="cstat-no" title="statement not covered" >  return jwt.verify(token, config.jwtRefreshSecret) as JwtPayload;</span>
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -154,7 +154,7 @@ export const verifyRefreshToken = (token: string): JwtPayload =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-08-12T20:29:17.049Z
+                at 2026-08-12T20:44:10.447Z
             </div>
         <script src="../prettify.js"></script>
         <script>
